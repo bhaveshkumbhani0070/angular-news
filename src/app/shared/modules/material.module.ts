@@ -13,11 +13,13 @@ import {
   MatSliderModule,
   MatSnackBarModule,
   MatTooltipModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatNativeDateModule
 } from '@angular/material';
 
 import {MatTableModule} from '@angular/material/table';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSelectModule} from '@angular/material/select';
 
 import {NgModule} from '@angular/core';
 
@@ -38,7 +40,10 @@ import {NgModule} from '@angular/core';
     MatListModule,
     MatDialogModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
   ],
   exports: [
     MatButtonModule,
@@ -56,7 +61,10 @@ import {NgModule} from '@angular/core';
     MatListModule,
     MatDialogModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
   ],
 })
 

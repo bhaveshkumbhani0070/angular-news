@@ -17,9 +17,9 @@ export class HeroDetailComponent {
               private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe((params: any) => {
       if (params['id']) {
-        this.heroService.getHeroById(params['id']).subscribe((hero: Hero) => {
-          this.hero = hero;
-        });
+        // this.heroService.getHeroById(params['id']).subscribe((hero: Hero) => {
+        //   this.hero = hero;
+        // });
       }
     });
   }
