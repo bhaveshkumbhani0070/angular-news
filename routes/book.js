@@ -55,7 +55,7 @@ router.get('/news', function(req, res, next) {
                     }
                 });
         } else {
-            console.log('Error');
+            console.log('Connection error');
         }
     });
 })
@@ -78,7 +78,7 @@ router.get('/latestNews', function(req, res, next) {
                     }
                 });
         } else {
-            console.log('Error', err);
+            console.log('Connection error');
         }
     });
 });

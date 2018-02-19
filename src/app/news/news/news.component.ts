@@ -70,7 +70,7 @@ export class NewsComponent {
       console.log('data',d);
       this.selectedData=d;
       this.heroService.changeMessage(d.contents)
-      this.router.navigate(['content/' + d.no]);
+      // this.router.navigate(['content/' + d.no]);
     }
 }
 export class UserDataSource extends DataSource<any> {

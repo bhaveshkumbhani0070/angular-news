@@ -16,7 +16,7 @@ const routes: Routes = [
   // News
   {path:'',component:NewsComponent},
   {path:'content',component:ContentComponent},
-  {path:'content/:id',component:ContentComponent},
+  {path:'content/:date/:id',component:ContentComponent},
 
   {path: AppConfig.routes.error404, component: Error404Component},
   // otherwise redirect to 404

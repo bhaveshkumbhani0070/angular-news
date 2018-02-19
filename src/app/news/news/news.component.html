@@ -19,16 +19,15 @@
 
                 <ng-container matColumnDef="title">
                     <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
-                    <mat-cell *matCellDef="let data"> {{data.title}} </mat-cell>
+                    <mat-cell *matCellDef="let data"><a routerLink="content/{{data.date | date:'yyyyMMdd'}}/{{data.no}}" (click)="getContent(data)">{{data.title}}</a> </mat-cell>
                 </ng-container>
-
                 <!-- <ng-container matColumnDef="type">
                     <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
                     <mat-cell *matCellDef="let data"> {{data.type}} </mat-cell>
                 </ng-container> -->
 
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-                <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="getContent(row)"></mat-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
             </mat-table>
 
             <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]">
