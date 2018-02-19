@@ -7,6 +7,7 @@ import {Hero} from './hero.model';
 import {Observable} from 'rxjs/Observable';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material';
 import {TranslateService} from '@ngx-translate/core';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class HeroService {
@@ -34,6 +35,14 @@ export class HeroService {
     });
   }
 
+  private messageSource = new BehaviorSubject<string>("false");
+  currentMessage = this.messageSource.asObservable();
+
+  changeMessage(message: string) {
+    this.messageSource.next(message)
+  }
+
+  
   getAllHeroes(): Observable<Hero[]> {
     return this.http.get(this.heroesUrl)
       .map(response => {

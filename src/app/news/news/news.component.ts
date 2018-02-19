@@ -3,6 +3,8 @@ import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import {Router} from '@angular/router';
 import {DataSource} from '@angular/cdk/collections';
+
+
 import 'rxjs/add/observable/of';
 
 import {Hero} from '../../heroes/shared/hero.model';
@@ -18,8 +20,11 @@ export class NewsComponent {
 
     heroes: Hero[] = null;
     data=[];
+    message:string;
+
+    selectedData=[]
     canVote = false;
-    
+
     dataSource = new UserDataSource(this.heroService);
     constructor(
       private router: Router,
@@ -37,9 +42,12 @@ export class NewsComponent {
       //   console.log('data',data);
       //   this.data=data;
       // })
-    }
 
-    displayedColumns = ['no','date','title','type'];
+     
+     
+    }
+    
+    displayedColumns = ['no','date','title'];//type
     
     // dataSource = new MatTableDataSource(this.data);  
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -58,9 +66,11 @@ export class NewsComponent {
         });
       });
     }
-    getContent(data){
-      console.log('data',data);
-        this.router.navigate(['content/' + data.no]);
+    getContent(d){
+      console.log('data',d);
+      this.selectedData=d;
+      this.heroService.changeMessage(d.contents)
+      this.router.navigate(['content/' + d.no]);
     }
 }
 export class UserDataSource extends DataSource<any> {

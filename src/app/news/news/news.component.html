@@ -2,7 +2,7 @@
     <div fxFlex="10" fxFlex.gt-sm="20"></div>
     <div fxFlex="90" fxFlex.gt-sm="80">
         <!-- <h1 class="section-title">{{'topHeroes' | translate}}</h1> -->
-        <mat-progress-spinner *ngIf="!heroes" class="progress-spinner" [color]="'primary'" [mode]="'indeterminate'">
+        <mat-progress-spinner *ngIf="!data" class="progress-spinner" [color]="'primary'" [mode]="'indeterminate'">
         </mat-progress-spinner>
 
         <div class="example-container mat-elevation-z8">
@@ -22,10 +22,10 @@
                     <mat-cell *matCellDef="let data"> {{data.title}} </mat-cell>
                 </ng-container>
 
-                <ng-container matColumnDef="type">
+                <!-- <ng-container matColumnDef="type">
                     <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
                     <mat-cell *matCellDef="let data"> {{data.type}} </mat-cell>
-                </ng-container>
+                </ng-container> -->
 
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
                 <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="getContent(row)"></mat-row>
