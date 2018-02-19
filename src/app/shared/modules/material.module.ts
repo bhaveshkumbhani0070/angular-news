@@ -5,7 +5,6 @@ import {
   MatDialogModule,
   MatGridListModule,
   MatIconModule,
-  MatInputModule,
   MatListModule,
   MatMenuModule,
   MatProgressBarModule,
@@ -20,6 +19,7 @@ import {
 import {MatTableModule} from '@angular/material/table';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
 
 import {NgModule} from '@angular/core';
 

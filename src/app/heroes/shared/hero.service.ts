@@ -41,7 +41,6 @@ export class HeroService {
   changeMessage(message: string) {
     this.messageSource.next(message)
   }
-
   
   getAllHeroes(): Observable<Hero[]> {
     return this.http.get(this.heroesUrl)
@@ -57,6 +56,14 @@ export class HeroService {
       })
       .catch(error => this.handleError(error));
   }
+  getSelectedNews(value,field): Observable<Hero[]> {
+    return this.http.get("http://localhost:3000/api/news?value=" + value + "&field=" + field)
+      .map(response => {
+        return response;
+      })
+      .catch(error => this.handleError(error));
+  }
+  
   getHeroById(heroId: string): Observable<Hero> {
     return this.http.get(this.heroesUrl + '/' + heroId)
       .map(response => {

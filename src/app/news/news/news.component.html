@@ -1,3 +1,23 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+    <mat-form-field>
+        <mat-select [(value)]="selected">
+            <mat-option value="default">Select field for search</mat-option>
+            <mat-option value="no">Number</mat-option>
+            <mat-option value="author">Author</mat-option>
+            <mat-option value="date">Date</mat-option>
+            <mat-option value="title">Title</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field *ngIf="selected!='date'">
+        <input matInput placeholder="{{ 'field name' | translate }}!" [(ngModel)]="field">
+    </mat-form-field>
+    <mat-form-field *ngIf="selected=='date'">
+        <input matInput [matDatepicker]="picker" [(ngModel)]="field" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <button mat-raised-button (click)="searchNews(field,selected)">Search</button>
+</div>
 <div fxLayout="row">
     <div fxFlex="10" fxFlex.gt-sm="20"></div>
     <div fxFlex="90" fxFlex.gt-sm="80">

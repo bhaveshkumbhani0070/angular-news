@@ -61,5 +61,9 @@ export class SearchBarComponent {
   }
   searchNews(val,field){
     console.log('data',val,' field',field);
+      this.heroService.getSelectedNews(val,field).subscribe((data:Array<Hero>)=>{
+        console.log('data',data);
+      })
+    // getSelectedNews(value,field)
   }
 }

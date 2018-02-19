@@ -15,8 +15,7 @@
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
 </mat-form-field>
-<button mat-raised-button (click)="searchNews(selected,field)">Search</button>
-
+<button mat-raised-button (click)="searchNews(field,selected)">Search</button>
 <!-- <mat-autocomplete #heroesAutocomplete="matAutocomplete">
     <mat-option *ngFor="let hero of filteredHeroes"
                 (onSelectionChange)="searchHero(hero)"

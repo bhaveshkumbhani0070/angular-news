@@ -3,7 +3,7 @@ import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import {Router} from '@angular/router';
 import {DataSource} from '@angular/cdk/collections';
-
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import 'rxjs/add/observable/of';
 
@@ -24,6 +24,8 @@ export class NewsComponent {
 
     selectedData=[]
     canVote = false;
+    viewDate:Boolean=true;
+    selected = 'default';
 
     dataSource = new UserDataSource(this.heroService);
     constructor(
@@ -41,10 +43,7 @@ export class NewsComponent {
       // this.heroService.getAllData().subscribe((data:Array<Hero>)=>{
       //   console.log('data',data);
       //   this.data=data;
-      // })
-
-     
-     
+      // }) 
     }
     
     displayedColumns = ['no','date','title'];//type
@@ -71,6 +70,15 @@ export class NewsComponent {
       this.selectedData=d;
       this.heroService.changeMessage(d.contents)
       // this.router.navigate(['content/' + d.no]);
+    }
+    searchNews(val,field){
+      console.log('data',val,' field',field);
+      this.dataSource = new UserDataSource(this.heroService);
+      
+        this.heroService.getSelectedNews(val,field).subscribe((data:Array<Hero>)=>{
+          console.log('data',data);
+        })
+      // getSelectedNews(value,field)
     }
 }
 export class UserDataSource extends DataSource<any> {

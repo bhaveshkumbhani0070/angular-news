@@ -7,7 +7,6 @@ import {APP_CONFIG, AppConfig} from './config/app.config';
 import {AppRoutingModule} from './app-routing.module';
 import {SharedModule} from './shared/modules/shared.module';
 import {CoreModule} from './core/core.module';
-
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
