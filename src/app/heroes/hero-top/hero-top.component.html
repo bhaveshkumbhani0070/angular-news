@@ -1,0 +1,58 @@
+<div fxLayout="row">
+    <div fxFlex="10" fxFlex.gt-sm="20"></div>
+    <div fxFlex="90" fxFlex.gt-sm="80">
+        <h1 class="section-title">{{'topHeroes' | translate}}</h1>
+        <mat-progress-spinner *ngIf="!heroes" class="progress-spinner" [color]="'primary'" [mode]="'indeterminate'">
+        </mat-progress-spinner>
+        <!-- <div id="heroes-list" *ngIf="data">
+            <ng-container *ngFor="let hero of data">
+                <mat-card class="hero-card">
+                    <mat-card-header>
+                        <mat-card-title>{{data.no}}</mat-card-title>
+                        <mat-card-subtitle>{{hero.alterEgo}}</mat-card-subtitle>
+                        <div class="flex-spacer"></div>
+                        <div class="hero-actions">
+                            {{hero.likes}}
+                            <mat-icon matTooltip="{{(canVote ? 'canVote' : 'cannotVote') | translate}}" [matTooltipPosition]="'above'" class="like-icon" (click)="like(hero)">favorite
+                            </mat-icon>
+                        </div>
+                    </mat-card-header>
+                </mat-card>
+            </ng-container>
+        </div> -->
+
+
+
+        <div class="example-container mat-elevation-z8">
+            <mat-table #table [dataSource]="dataSource">
+                <ng-container matColumnDef="no">
+                    <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+                    <mat-cell *matCellDef="let data"> {{data.no}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="date">
+                    <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+                    <mat-cell *matCellDef="let data"> {{data.date | date:'dd/MM/yyyy'}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="title">
+                    <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+                    <mat-cell *matCellDef="let data"> {{data.title}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="type">
+                    <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+                    <mat-cell *matCellDef="let data"> {{data.type}} </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="getContent(row)"></mat-row>
+            </mat-table>
+
+            <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]">
+            </mat-paginator>
+        </div>
+
+    </div>
+    <div fxFlex="10" fxFlex.gt-sm="20"></div>
+</div>
