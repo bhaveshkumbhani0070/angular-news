@@ -55,7 +55,7 @@ router.get('/news', function(req, res, next) {
                         }
                     });
             } else {
-                news.find(query).toArray(
+                news.find(query).limit(30).toArray(
                     function(err, data) {
                         if (!err) {
                             console.log('total', data.length);

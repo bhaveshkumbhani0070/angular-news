@@ -1,7 +1,4 @@
-
-
-
-  import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {Observable} from 'rxjs/Observable';
@@ -21,13 +18,11 @@ import {Router} from '@angular/router';
   styleUrls: ['./news.component.css']
 })
 export class NewsComponent implements OnInit {
-  displayedColumns = ['no', 'page', 'date', 'title'];
+  displayedColumns = ['no', 'type', 'date', 'title'];
   exampleDatabase: ExampleHttpDao | null;
   dataSource = new MatTableDataSource();
 
   resultsLength = 0;
-  isLoadingResults = true;
-  isRateLimitReached = false;
   viewDate:Boolean=true;
   selected = 'default';
 
@@ -38,32 +33,25 @@ export class NewsComponent implements OnInit {
     private http: HttpClient,
     private router: Router,
     private heroService: HeroService) {}
-
+  ngAfterViewInit() {
+      this.dataSource.paginator = this.paginator;
+  }
   ngOnInit() {
     this.exampleDatabase = new ExampleHttpDao(this.http);
-
-    // If the user changes the sort order, reset back to the first page.
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
 
     merge(this.sort.sortChange, this.paginator.page)
       .pipe(
         startWith({}),
         switchMap(() => {
-          this.isLoadingResults = true;
           return this.exampleDatabase!.getRepoIssues('false','false');
         }),
         map(data => {
-          // Flip flag to show that loading has finished.
-          this.isLoadingResults = false;
-          this.isRateLimitReached = false;
           this.resultsLength = data.items.length;
           console.log('data',data);
           return data.items;
         }),
         catchError(() => {
-          this.isLoadingResults = false;
-          // Catch if the GitHub API has reached its rate limit. Return empty data.
-          this.isRateLimitReached = true;
           return observableOf([]);
         })
       ).subscribe(data => this.dataSource.data = data);
@@ -76,26 +64,17 @@ export class NewsComponent implements OnInit {
       .pipe(
         startWith({}),
         switchMap(() => {
-          this.isLoadingResults = true;
           return this.exampleDatabase!.getRepoIssues(val,field);
         }),
         map(data => {
-          // Flip flag to show that loading has finished.
-          this.isLoadingResults = false;
-          this.isRateLimitReached = false;
           this.resultsLength = data.items.length;
           console.log('data',data);
           return data.items;
         }),
         catchError(() => {
-          this.isLoadingResults = false;
-          // Catch if the GitHub API has reached its rate limit. Return empty data.
-          this.isRateLimitReached = true;
           return observableOf([]);
         })
       ).subscribe(data => this.dataSource.data = data);
-      
-    // getSelectedNews(value,field)
   }
   getContent(d){
     console.log('data',d);
@@ -111,7 +90,7 @@ export interface GithubApi {
 }
 
 export interface GithubIssue {
-  created_at: string;
+  type: string;
   no: string;
   state: string;
   title: string;
