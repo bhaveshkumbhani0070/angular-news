@@ -20,7 +20,7 @@
 </div>
 
 <div class="example-container mat-elevation-z8">
-    <mat-table #table [dataSource]="dataSource" class="example-table" matSort matSortActive="title" matSortDisableClear matSortDirection="asc">
+    <mat-table #table [dataSource]="dataSource" class="example-table">
         <ng-container matColumnDef="no">
             <mat-header-cell *matHeaderCellDef>Number</mat-header-cell>
             <mat-cell *matCellDef="let row">{{ row.no }}</mat-cell>
@@ -34,7 +34,7 @@
             <mat-cell *matCellDef="let row">{{ row.date |date :'dd/MM/yyyy' }}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="title">
-            <mat-header-cell *matHeaderCellDef mat-sort-header disableClear="true">
+            <mat-header-cell *matHeaderCellDef>
                 Title
             </mat-header-cell>
             <mat-cell *matCellDef="let row"><a routerLink="content/{{row.date | date:'yyyyMMdd'}}/{{row.no}}" (click)="getContent(row)">{{ row.title }} </a></mat-cell>

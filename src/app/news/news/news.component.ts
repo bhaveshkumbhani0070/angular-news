@@ -38,9 +38,9 @@ export class NewsComponent implements OnInit {
   }
   ngOnInit() {
     this.exampleDatabase = new ExampleHttpDao(this.http);
-    this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+    // this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
 
-    merge(this.sort.sortChange, this.paginator.page)
+    merge()
       .pipe(
         startWith({}),
         switchMap(() => {
@@ -60,7 +60,7 @@ export class NewsComponent implements OnInit {
   searchNews(val,field){
     console.log('data',val,' field',field);
     
-     merge(this.sort.sortChange, this.paginator.page)
+     merge()
       .pipe(
         startWith({}),
         switchMap(() => {
