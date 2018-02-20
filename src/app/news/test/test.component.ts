@@ -1,7 +1,4 @@
-
-
-
-  import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {Observable} from 'rxjs/Observable';
@@ -14,13 +11,12 @@ import {switchMap} from 'rxjs/operators/switchMap';
 import {HeroService} from '../../heroes/shared/hero.service';
 import {Router} from '@angular/router';
 
-
 @Component({
-  selector: 'app-news',
-  templateUrl: './news.component.html',
-  styleUrls: ['./news.component.css']
+  selector: 'app-test',
+  templateUrl: './test.component.html',
+  styleUrls: ['./test.component.css']
 })
-export class NewsComponent implements OnInit {
+export class TestComponent implements OnInit {
   displayedColumns = ['no', 'page', 'date', 'title'];
   exampleDatabase: ExampleHttpDao | null;
   dataSource = new MatTableDataSource();

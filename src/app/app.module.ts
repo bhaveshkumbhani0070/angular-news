@@ -19,6 +19,7 @@ import {TimingInterceptor} from './shared/interceptors/timing.interceptor';
 import {SampleModule} from 'angular-example-library';
 import { NewsComponent } from './news/news/news.component';
 import { ContentComponent } from './news/content/content.component';
+import { TestComponent } from './news/test/test.component';
 
 @NgModule({
   imports: [
@@ -46,7 +47,8 @@ import { ContentComponent } from './news/content/content.component';
     AppComponent,
     HeroTopComponent,
     NewsComponent,
-    ContentComponent
+    ContentComponent,
+    TestComponent
   ],
   providers: [
     {provide: APP_CONFIG, useValue: AppConfig},
@@ -58,3 +60,4 @@ import { ContentComponent } from './news/content/content.component';
 
 export class AppModule {
 }
+

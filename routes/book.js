@@ -42,18 +42,31 @@ router.get('/news', function(req, res, next) {
             }
 
             console.log('query', query);
-
-            news.find(query).limit(20).toArray(
-                function(err, data) {
-                    if (!err) {
-                        console.log('total', data.length);
-                        res.send(data);
-                        return;
-                    } else {
-                        console.log('Errr', err);
-                        return;
-                    }
-                });
+            if (value == "false" && field == "false") {
+                news.find().sort({ "date": -1 }).limit(20).toArray(
+                    function(err, data) {
+                        if (!err) {
+                            console.log('total', data.length);
+                            res.send({ items: data });
+                            return;
+                        } else {
+                            console.log('Errr', err);
+                            return;
+                        }
+                    });
+            } else {
+                news.find(query).toArray(
+                    function(err, data) {
+                        if (!err) {
+                            console.log('total', data.length);
+                            res.send({ items: data });
+                            return;
+                        } else {
+                            console.log('Errr', err);
+                            return;
+                        }
+                    });
+            }
         } else {
             console.log('Connection error');
         }
